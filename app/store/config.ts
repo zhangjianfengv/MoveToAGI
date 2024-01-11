@@ -1,13 +1,7 @@
-import { LLMModel } from "../client/api";
-import { isMacOS } from "../utils";
-import { getClientConfig } from "../config/client";
-import {
-  DEFAULT_INPUT_TEMPLATE,
-  DEFAULT_MODELS,
-  DEFAULT_SIDEBAR_WIDTH,
-  StoreKey,
-} from "../constant";
-import { createPersistStore } from "../utils/store";
+import {LLMModel} from "../client/api";
+import {getClientConfig} from "../config/client";
+import {DEFAULT_INPUT_TEMPLATE, DEFAULT_MODELS, DEFAULT_SIDEBAR_WIDTH, StoreKey,} from "../constant";
+import {createPersistStore} from "../utils/store";
 
 export type ModelType = (typeof DEFAULT_MODELS)[number]["name"];
 
@@ -28,7 +22,7 @@ export enum Theme {
 export const DEFAULT_CONFIG = {
   lastUpdate: Date.now(), // timestamp, to merge state
 
-  submitKey: isMacOS() ? SubmitKey.MetaEnter : SubmitKey.CtrlEnter,
+  submitKey: SubmitKey.Enter,
   avatar: "1f603",
   fontSize: 14,
   theme: Theme.Auto as Theme,
@@ -46,7 +40,7 @@ export const DEFAULT_CONFIG = {
   models: DEFAULT_MODELS as any as LLMModel[],
 
   modelConfig: {
-    model: "gpt-3.5-turbo" as ModelType,
+    model: "gemini-pro" as ModelType,
     temperature: 0.5,
     top_p: 1,
     max_tokens: 4000,
